@@ -35,7 +35,7 @@ namespace AI.Demos.Three.Two
         {
             mKinematicSteeringOutput.velocity = target - position;
 
-            if(mKinematicSteeringOutput.velocity.magnitude < radiusSquared)
+            if(mKinematicSteeringOutput.velocity.sqrMagnitude < radiusSquared)
             {
                 mKinematicSteeringOutput.velocity = Vector3.zero;
                 return;
@@ -43,7 +43,7 @@ namespace AI.Demos.Three.Two
 
             mKinematicSteeringOutput.velocity /= timeToTarget;
 
-            if (mKinematicSteeringOutput.velocity.magnitude > maxSpeedSquared)
+            if (mKinematicSteeringOutput.velocity.sqrMagnitude > maxSpeedSquared)
             {
                 mKinematicSteeringOutput.velocity.Normalize();
                 mKinematicSteeringOutput.velocity *= maxSpeed;
