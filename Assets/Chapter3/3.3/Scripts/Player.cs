@@ -15,6 +15,7 @@ namespace AI.Demos.Three.Three
             mKinematic = new Kinematic();
             mSteering = new SteeringOutput();
             mKinematic.position = transform.position;
+            //mKinematic.orientation = (Mathf.PI / -2) + ((Mathf.PI * 2) * 3);
         }
 
         // Update is called once per frame
@@ -27,6 +28,8 @@ namespace AI.Demos.Three.Three
 
             if (Input.GetKey(KeyCode.A)) mSteering.linear += transform.right * -1;
             else if (Input.GetKey(KeyCode.D)) mSteering.linear += transform.right * 1;
+
+            mKinematic.orientation = Mathf.Atan2(mKinematic.velocity.x, mKinematic.velocity.z);
 
             mKinematic.Update(mSteering, 10f,Time.deltaTime);
 
