@@ -20,7 +20,8 @@ namespace AI.Demos.Three.Three
         // Start is called before the first frame update
         void Start()
         {
-            mSeek = new Seek(mKinematic, target.GetKinematic(), 1f);
+            mSeek = new Seek(mKinematic, 1f);
+            mSeek.target = target.GetKinematic();
         }
 
         // Update is called once per frame

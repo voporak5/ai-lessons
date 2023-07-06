@@ -4,8 +4,8 @@ namespace AI.Demos.Three.Three
 {
     public class Arrive
     {
-        Kinematic character;
-        Kinematic target;
+        public Kinematic target;
+        Kinematic character;        
 
         float maxAcceleration;
         float maxSpeed;
@@ -19,10 +19,9 @@ namespace AI.Demos.Three.Three
         float targetRadiusSquared;
         float slowRadiusSquared;
 
-        public Arrive(Kinematic character, Kinematic target, float maxAcceleration, float maxSpeed)
+        public Arrive(Kinematic character, float maxAcceleration, float maxSpeed)
         {
             this.character = character;
-            this.target = target;
             this.maxAcceleration = maxAcceleration;
             this.maxSpeed = maxSpeed;
 
@@ -31,7 +30,7 @@ namespace AI.Demos.Three.Three
             slowRadiusSquared = slowRadius * slowRadius;
         }
 
-        public SteeringOutput GetSteering()
+        public virtual SteeringOutput GetSteering()
         {
             SteeringOutput result = new SteeringOutput();
 

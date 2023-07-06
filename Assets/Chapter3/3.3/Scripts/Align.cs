@@ -1,4 +1,5 @@
 using UnityEngine;
+using AI.Foundation;
 
 namespace AI.Demos.Three.Three
 {
@@ -33,14 +34,7 @@ namespace AI.Demos.Three.Three
             float angularAcceleration = 0;
 
             //Limit angle from -pi to pi
-            if (Mathf.Abs(rotation) > Mathf.PI)
-            {
-                int divisibleBy = (int)(rotation / Mathf.PI);
-                if (divisibleBy % 2 != 0) divisibleBy++;
-                rotation -= (Mathf.PI * 2 * (divisibleBy/2));
-                
-            }
-
+            rotation = Utils.MapFromMinusPiToPi(rotation);
             rotationSize = Mathf.Abs(rotation);
 
             if (rotationSize < targetRadius) return null;

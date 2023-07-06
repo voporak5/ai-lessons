@@ -25,5 +25,17 @@ namespace AI.Demos.Three.Three
                 velocity *= maxSpeed;
             }
         }
+
+        public Kinematic Clone()
+        {
+            Kinematic clone = new Kinematic();
+
+            clone.position = position;
+            clone.orientation = orientation;
+            clone.velocity = velocity;
+            clone.rotation = rotation;
+
+            return clone;
+        }
     }
 }

@@ -2,19 +2,18 @@ namespace AI.Demos.Three.Three
 {
     public class Seek
     {
-        Kinematic character;
-        Kinematic target;
-
+        public Kinematic target;
+        private Kinematic character;
+        
         float maxAcceleration;
 
-        public Seek(Kinematic character, Kinematic target, float maxAcceleration)
+        public Seek(Kinematic character, float maxAcceleration)
         {
             this.character = character;
-            this.target = target;
             this.maxAcceleration = maxAcceleration;
         }
 
-        public SteeringOutput GetSteering()
+        public virtual SteeringOutput GetSteering()
         {
             SteeringOutput result = new SteeringOutput();
 
