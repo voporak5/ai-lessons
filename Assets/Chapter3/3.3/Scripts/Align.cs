@@ -5,8 +5,8 @@ namespace AI.Demos.Three.Three
 {
     public class Align
     {
-        Kinematic character;
-        Kinematic target;
+        public Kinematic target;
+        protected Kinematic character;        
 
         float maxAngularAcceleration;
         float maxRotation;
@@ -16,15 +16,14 @@ namespace AI.Demos.Three.Three
 
         float timeToTarget = 0.1f;
 
-        public Align(Kinematic character, Kinematic target, float maxAngularAcceleration, float maxRotation)
+        public Align(Kinematic character, float maxAngularAcceleration, float maxRotation)
         {
             this.character = character;
-            this.target = target;
             this.maxAngularAcceleration = maxAngularAcceleration;
             this.maxRotation = maxRotation;
         }
 
-        public SteeringOutput GetSteering()
+        public virtual SteeringOutput GetSteering()
         {
             SteeringOutput result = new SteeringOutput();
 

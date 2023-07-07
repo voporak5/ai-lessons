@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace AI.Demos.Three.Three
 {
-    public class Aligner : MonoBehaviour
+    public class Facer : MonoBehaviour
     {
         [SerializeField] Player target;
 
-        Align mAlign;
+        Face mFace;
         Kinematic mKinematic;
 
         private void Awake()
@@ -20,16 +20,16 @@ namespace AI.Demos.Three.Three
         // Start is called before the first frame update
         void Start()
         {
-            mAlign = new Align(mKinematic, 1f, 3f);
-            mAlign.target = target.GetKinematic();
+            mFace = new Face(mKinematic, 1f, 3f);
+            mFace.target = target.GetKinematic();
         }
 
         // Update is called once per frame
         void Update()
         {
-            SteeringOutput steering = mAlign.GetSteering();
+            SteeringOutput steering = mFace.GetSteering();
 
-            if (steering != null) mKinematic.Update(mAlign.GetSteering(), 10f, Time.deltaTime);
+            if (steering != null) mKinematic.Update(mFace.GetSteering(), 10f, Time.deltaTime);
 
             transform.position = new Vector3(mKinematic.position.x, 0.5f, mKinematic.position.z);
             transform.eulerAngles = new Vector3(0, mKinematic.orientation * Mathf.Rad2Deg, 0);
