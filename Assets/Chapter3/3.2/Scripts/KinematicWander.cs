@@ -1,3 +1,4 @@
+using AI.Foundation;
 using UnityEngine;
 
 namespace AI.Demos.Three.Two
@@ -27,8 +28,8 @@ namespace AI.Demos.Three.Two
 
         private void SetSteering(Vector3 fwd)
         {
-            mKinematicSteeringOutput.velocity = maxSpeed * fwd; ;
-            mKinematicSteeringOutput.rotation = maxRotation * (UnityEngine.Random.Range(0f, 1f) - UnityEngine.Random.Range(0f, 1f));   
+            mKinematicSteeringOutput.velocity = maxSpeed * fwd;
+            mKinematicSteeringOutput.rotation = maxRotation * Utils.RandomBinomial();   
         }
     }
 }

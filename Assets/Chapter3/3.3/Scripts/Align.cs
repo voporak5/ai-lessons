@@ -33,9 +33,9 @@ namespace AI.Demos.Three.Three
             float angularAcceleration = 0;
 
             //Limit angle from -pi to pi
-            rotation = Utils.MapFromMinusPiToPi(rotation);
+            rotation = Utils.MapFromMinusPiToPi(character.orientation,target.orientation);
             rotationSize = Mathf.Abs(rotation);
-
+            
             if (rotationSize < targetRadius) return null;
             if (rotationSize == 0) return null;
 
