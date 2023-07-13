@@ -35,5 +35,27 @@ namespace AI.Foundation
             return new Vector3(x, y, z);
         }
 
+        public static float DistNearestPointSegment(Vector3 pos, Vector3 segStart, Vector3 segEnd)
+        {
+            Vector3 qPrime = PointSegment(pos, segStart, segEnd);
+            Vector3 distance = qPrime - pos;
+            return distance.magnitude;
+        }
+
+        public static Vector3 PointSegment(Vector3 pos,Vector3 segStart, Vector3 segEnd)
+        {
+            Vector3 qMinusStart = pos - segStart;
+            Vector3 v = segEnd - segStart;
+            float vDotQMinusStart = Vector3.Dot(v,qMinusStart);
+            float vDotv = Vector3.Dot(v, v);
+            float t = vDotQMinusStart / vDotv;
+            Vector3 qPrime = Vector3.zero;
+
+            if (t < 0) qPrime = segStart;
+            else if (t > 1) qPrime = segEnd;
+            else qPrime = segStart + (v * t);
+
+            return qPrime;
+        }
     }
 }

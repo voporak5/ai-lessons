@@ -6,15 +6,12 @@ namespace AI.Demos.Three.Three
     {
         public new Kinematic target;
 
-        private Kinematic character;
-
         private float maxPrediction;
         private float maxPredictionSquared;
 
         public Pursue(Kinematic character, float maxPrediction, float maxAcceleration)
             : base(character, maxAcceleration)
         {
-            this.character = character;
             this.maxPrediction = maxPrediction;
 
             maxPredictionSquared = maxPrediction * maxPrediction;

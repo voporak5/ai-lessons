@@ -29,8 +29,6 @@ namespace AI.Demos.Three.Three
 
             if (steering != null) mKinematic.Update(steering, 10f, Time.deltaTime);
 
-            Debug.Log(mKinematic.velocity);
-
             transform.position = new Vector3(mKinematic.position.x, 0.5f, mKinematic.position.z);
             transform.eulerAngles = new Vector3(0, mKinematic.orientation * Mathf.Rad2Deg, 0);
 

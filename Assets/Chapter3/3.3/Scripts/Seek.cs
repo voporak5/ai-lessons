@@ -3,7 +3,7 @@ namespace AI.Demos.Three.Three
     public class Seek
     {
         public Kinematic target;
-        private Kinematic character;
+        protected Kinematic character;
         
         float maxAcceleration;
 
