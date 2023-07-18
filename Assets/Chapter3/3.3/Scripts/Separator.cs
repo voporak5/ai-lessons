@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace AI.Demos.Three.Three
 {
-    public class Wanderer : MonoBehaviour
+    public class Separator : MonoBehaviour
     {
-        Wander mWander;
+        Separation mSeparation;
         Kinematic mKinematic;
-        public Transform target;
+        public Player[] targets;
 
         private void Awake()
         {
@@ -19,21 +19,25 @@ namespace AI.Demos.Three.Three
         // Start is called before the first frame update
         void Start()
         {
-            mWander = new Wander(mKinematic, 10f, 10f);
+            mSeparation = new Separation(mKinematic, 50f, 5f,20f);
+
+            mSeparation.targets = new Kinematic[targets.Length];
+            for(int i = 0; i < targets.Length; i++)
+            {
+                mSeparation.targets[i] = targets[i].GetKinematic();
+            }
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            SteeringOutput steering = mWander.GetSteering();
+            SteeringOutput steering = mSeparation.GetSteering();
 
             if (steering != null) mKinematic.Update(steering, 10f, Time.deltaTime);
 
             transform.position = new Vector3(mKinematic.position.x, 0.5f, mKinematic.position.z);
             transform.eulerAngles = new Vector3(0, mKinematic.orientation * Mathf.Rad2Deg, 0);
-
-            target.position = mWander.target.position;
-
         }
 
         public Kinematic GetKinematic()
